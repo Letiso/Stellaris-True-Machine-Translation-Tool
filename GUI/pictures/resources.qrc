@@ -1,0 +1,42 @@
+<RCC>
+  <qresource prefix="backgrounds">
+    <file>backgrounds/FileSelection.png</file>
+    <file>backgrounds/UpdateTranslation.png</file>
+    <file>backgrounds/AcceptMessage.png</file>
+    <file>backgrounds/Collection.png</file>
+    <file>backgrounds/ModList.png</file>
+    <file>backgrounds/SteamID.png</file>
+    <file>backgrounds/AboutTool.png</file>
+    <file>backgrounds/ChooseFile.png</file>
+    <file>backgrounds/Contact.png</file>
+    <file>backgrounds/ErrorMessage.png</file>
+    <file>backgrounds/MainBackground.png</file>
+    <file>backgrounds/MoreOutputLanguage.png</file>
+    <file>backgrounds/OutputLanguage.png</file>
+    <file>backgrounds/Reference.png</file>
+    <file>backgrounds/SuccessMessage.png</file>
+    <file>backgrounds/ToolLanguage.png</file>
+  </qresource>
+  <qresource prefix="icons">
+    <file>icons/collection.png</file>
+    <file>icons/mod_list.png</file>
+    <file>icons/update.png</file>
+    <file>icons/logo.png</file>
+    <file>icons/paradox.png</file>
+    <file>icons/explorer.png</file>
+    <file>icons/github.png</file>
+    <file>icons/lang.png</file>
+    <file>icons/steam.png</file>
+    <file>icons/stmtt.png</file>
+    <file>icons/telegram.png</file>
+    <file>icons/active.png</file>
+    <file>icons/pass.png</file>
+    <file>icons/pass_sorting.png</file>
+    <file>icons/sorting.png</file>
+  </qresource>
+  <qresource prefix="effects">
+    <file>effects/large_bottom_shadow.png</file>
+    <file>effects/bottom_shadow.png</file>
+    <file>effects/mid_line.png</file>
+  </qresource>
+</RCC>
