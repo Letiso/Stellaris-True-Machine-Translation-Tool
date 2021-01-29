@@ -1,5 +1,5 @@
 ### Очень удобный переводчик модификаций с приятным интерфейсом, позволяющий переводить моды более чем на 20 языков с возможностью подправить каждую строку по своему вкусу
-### A very convenient translator of modifications with a nice interface that allows you to translate mods into more than 20 languages ​​with the ability to correct each line to your liking
+### A very convenient translator of modifications with a glad interface that allows you to translate mods into more than 20 languages ​​with the ability to correct each line to your liking
 
 Утилита написана на версии Python 3.9
 Интерфейс основан на PyQt5
