@@ -1,0 +1,9 @@
+GUI/GUI_windows/__pycache__/
+GUI/GUI_windows_source/__pycache__/
+GUI/__pycache__/
+GUI/pictures/__pycache__/
+GUI/pictures/thumbs/
+scripts/__pycache__/
+.idea/
+venv/
+Properties.json

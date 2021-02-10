@@ -39,7 +39,7 @@
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -85,6 +85,11 @@ QPushButton:pressed{
      <height>250</height>
     </size>
    </property>
+   <property name="font">
+    <font>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-image: url(:/backgrounds/backgrounds/SuccessMessage.png);</string>
    </property>
@@ -106,7 +111,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>Montserrat</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>9</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -141,7 +146,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>14</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -169,7 +174,7 @@ color: #ffffff;</string>
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -195,7 +200,7 @@ color: #ffffff;</string>
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>12</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -220,6 +225,11 @@ color: #ffffff;</string>
      <width>271</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
+    </font>
    </property>
    <property name="text">
     <string>Файл успешно обновлен.Файл сохранен.Мод успешно добавлен в коллекцию.Моды успешно отсортированы.Язык интерфейса был изменен

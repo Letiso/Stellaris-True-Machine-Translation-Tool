@@ -1,4 +1,3 @@
-# TODO Revise the Reference according to the innovations
 """
                             ↓ Инициализация данных ↓
 """

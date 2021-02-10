@@ -14,7 +14,6 @@ from googletrans.constants import LANGUAGES
 
 from scripts.db import set_collection_data, get_info_from_db
 from scripts.collection_db import db_init, write_data_in_collection, update_data_in_collection, get_data_from_collection
-# from scripts.comparer import Comparator
 from scripts.pictures import thumbs_synchronize
 
 drive = GetSystemDirectory().split(':')[0]
@@ -26,7 +25,8 @@ local_mod_path = F'{paradox_folder}\\mod\\local_localisation'
 collection_hash = '6fdfef4b-b06d-42fc-897f-b922efcd534b'
 
 collection_path = f'{local_mod_path}\\collection.db'
-collection_tumbnail_path = f'{paradox_folder}\\.launcher-cache\\_local-mod-thumbnail-collection_ru\\{collection_hash}.png'
+collection_thumbnail_path = \
+    f'{paradox_folder}\\.launcher-cache\\_local-mod-thumbnail-collection_ru\\{collection_hash}.png'
 stack_path = f'{local_mod_path}\\stack.json'
 temp_folder_path = f'{local_mod_path}\\temp'
 data = {}
@@ -55,7 +55,7 @@ def set_collection_mod_thumbnail():
         properties = json.load(properties)
         target_language = properties["target_language"]
 
-    collection_thumbs_dir = collection_tumbnail_path.split(f'\\{collection_hash}')[0]
+    collection_thumbs_dir = collection_thumbnail_path.split(f'\\{collection_hash}')[0]
     if os.path.isdir(collection_thumbs_dir) is False:
         os.mkdir(collection_thumbs_dir)
 
@@ -63,18 +63,18 @@ def set_collection_mod_thumbnail():
         thumbnails = os.listdir(local_mod_thumbnails_path)
         for thumbnail in thumbnails:
             if target_language in thumbnail:
-                shutil.copyfile(f'{local_mod_thumbnails_path}\\{thumbnail}', collection_tumbnail_path)
-                shutil.copyfile(collection_tumbnail_path, f'{local_mod_path}\\thumbnail.png')
-                set_collection_data('set_collection_thumbnail', (collection_tumbnail_path, collection_hash))
+                shutil.copyfile(f'{local_mod_thumbnails_path}\\{thumbnail}', collection_thumbnail_path)
+                shutil.copyfile(collection_thumbnail_path, f'{local_mod_path}\\thumbnail.png')
+                set_collection_data('set_collection_thumbnail', (collection_thumbnail_path, collection_hash))
                 break
 
 
-def thumbs_init(path="GUI\pictures\\thumbs"):
+def thumbs_init(path="GUI\\pictures\\thumbs"):
     if os.path.isdir(path) is False:
         os.mkdir(path)
 
-    shutil.copy("GUI\pictures\\icons\\DoesNotExists.png", "GUI\pictures\\thumbs\\DoesNotExists.png")
-    with open("GUI\pictures\\thumbs\\thumbs.json", "w", encoding="utf-8") as thumb:
+    shutil.copy("GUI\\pictures\\icons\\DoesNotExists.png", "GUI\\pictures\\thumbs\\DoesNotExists.png")
+    with open("GUI\\pictures\\thumbs\\thumbs.json", "w", encoding="utf-8") as thumb:
         thumbnails = {}
         json.dump(thumbnails, thumb)
 
@@ -116,12 +116,17 @@ def local_mod_init():
         properties = json.load(prop)
 
     with open(f'{local_mod_path}.mod', 'w', encoding='utf-8') as mod:
-        mod_description = f'name="{properties["collection_name"]}"' \
-                          '\ntags={\n	"Translation"\n}' \
-                          f'\npicture="thumbnail.png"' \
-                          f'\nsupported_version="{current_stellaris_version()}"' \
-                          f'\npath="{paradox_folder}\mod\local_localisation"'.replace('\\', '/')
-        mod.write(mod_description)
+        path = paradox_folder.replace('\\', '/')
+        mod_description = f"""version="2.8.*"
+tags={{
+    "Translation"
+}}
+name="{properties["collection_name"]}"
+supported_version="{current_stellaris_version()}"
+picture="thumbnail.png"
+path="{path}/mod/local_localisation"
+"""
+        mod.write(mod_description[:-1])
 
     with open(f'{local_mod_path}\\descriptor.mod', 'w', encoding='utf-8') as descriptor:
         descriptor.write(mod_description.split('\npath=')[0])
@@ -143,7 +148,7 @@ def generated_files_init():
             os.path.isfile(f'{local_mod_path}\\local_localisation\\descriptor.mod') is False:
         local_mod_init()
 
-    if os.path.isfile('GUI\pictures\\thumbs\\thumbs.json') is False:
+    if os.path.isfile('GUI\\pictures\\thumbs\\thumbs.json') is False:
         thumbs_init()
 
     if os.path.isfile(collection_path) is False:
@@ -248,10 +253,11 @@ def replace_parts(func):
 
     return wrapper
 
+
 @replace_parts
 def prepare_temp_files(original_text, source_text, file_type, temp_text):
     with open(data["source_file_path"], 'w', encoding='utf-8') as source, \
-            open(data["machine_file_path"], 'w', encoding='utf-8') as machine,\
+            open(data["machine_file_path"], 'w', encoding='utf-8') as machine, \
             open(data["user_input_file_path"], 'w', encoding='utf-8') as user_input:
         source.write(source_text)
         machine.write(temp_text)
@@ -335,12 +341,10 @@ def get_total_value(files):
 
 def get_collection_description(collection_name, prescripted_description, mod_list):
     description = get_info_from_db('get_collection_description', (collection_name,), count=1)[0]
-    if mod_list in description:
-        description = description.split(f'\n\n{mod_list}')[0]
-
-    if not description or description == '':
+    if description is None:
         description = prescripted_description
-
+    elif mod_list in description:
+        description = description.split(f'\n\n{mod_list}')[0]
     return description
 
 

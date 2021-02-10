@@ -37,6 +37,11 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
+    </font>
+   </property>
    <property name="accessibleName">
     <string/>
    </property>
@@ -73,6 +78,11 @@ image: url(:/icons/icons/lang.png);
      <height>250</height>
     </size>
    </property>
+   <property name="font">
+    <font>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-image: url(:/backgrounds/backgrounds/ToolLanguage.png);</string>
    </property>
@@ -94,7 +104,7 @@ image: url(:/icons/icons/lang.png);
    </property>
    <property name="font">
     <font>
-     <family>Montserrat</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>9</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -132,7 +142,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>16</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -160,7 +170,7 @@ color: #ffffff;</string>
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>10</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -210,7 +220,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>9</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -262,7 +272,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>9</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -314,7 +324,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>9</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -366,7 +376,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>9</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -418,7 +428,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>9</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -458,7 +468,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>

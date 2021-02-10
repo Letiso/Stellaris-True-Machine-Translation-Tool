@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, QtGui
 
 
 def mod_name_style(button):
-    button.setFont(QtGui.QFont("Arkhip", 9))
+    button.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 9))
     button.setStyleSheet("""
     QPushButton{
         background-color: transparent;
@@ -21,7 +21,7 @@ def mod_name_style(button):
 
 
 def file_name_style(button):
-    button.setFont(QtGui.QFont("Arkhip", 9))
+    button.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 9))
     button.setStyleSheet("""
     QPushButton{
         background-color: transparent;
@@ -41,7 +41,7 @@ def file_name_style(button):
 
 
 def not_chosen_lang_style(button):
-    button.setFont(QtGui.QFont("KB Astrolyte", 9))
+    button.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 9))
     button.setStyleSheet("""
     QPushButton{
         background-color: rgba(31, 37, 51, 50);
@@ -62,7 +62,7 @@ def not_chosen_lang_style(button):
 
 
 def choosen_lang_style(button):
-    button.setFont(QtGui.QFont("KB Astrolyte", 10))
+    button.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 10))
     button.setStyleSheet("""
     QPushButton{
         background-color: #05B8CC;
@@ -87,7 +87,7 @@ def choosen_lang_style(button):
 def incomplete_translation_style(status):
     status.setFormat("%p%   ")
     status.setInvertedAppearance(True)
-    status.setFont(QtGui.QFont("KB Astrolyte", 9))
+    status.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 9))
     status.setStyleSheet("""
     QProgressBar{
         background-color:  #1f2533;
@@ -109,7 +109,7 @@ def incomplete_translation_style(status):
 def complete_translation_style(status):
     status.setFormat("%p%   ")
     status.setInvertedAppearance(True)
-    status.setFont(QtGui.QFont("KB Astrolyte", 9))
+    status.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 9))
     status.setStyleSheet("""
     QProgressBar{
         background-color: #1f2533;

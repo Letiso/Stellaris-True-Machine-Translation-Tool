@@ -34,7 +34,7 @@ class AcceptMessageWindow(QtWidgets.QDialog, AcceptMessage.Ui_Dialog):
         self.ExitButton.clicked.connect(self.close)
         self.AcceptButton.clicked.connect(accept_func)
         self.DeniedButton.clicked.connect(denied_func or self.close)
-        self.ReferenceButton.clicked.connect(lambda: self.parent.parent.reference_window('QLabel_2_1_Functional'))
+        # self.ReferenceButton.clicked.connect(lambda: self.parent.reference_window('QLabel_2_1_Functional'))
         self.WindowMoveButton.installEventFilter(self)
 
     def close(self):

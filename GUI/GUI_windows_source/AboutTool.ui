@@ -70,7 +70,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Montserrat</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>9</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -105,7 +105,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -136,7 +136,7 @@ color: #ffffff;</string>
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -164,7 +164,7 @@ color: #ffffff;</string>
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>10</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -226,7 +226,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -257,7 +257,7 @@ color: #ffffff;</string>
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>

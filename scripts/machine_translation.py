@@ -5,6 +5,7 @@
 from json import load
 from googletrans import Translator
 from langdetect import detect, DetectorFactory
+# from scripts.utils import check_new_line_sym_ending
 
 
 """
@@ -44,5 +45,4 @@ def translate_line(line, file_type, target_language=None, translator=None):
     if type(translation) is not str:
         raise ConnectionError
 
-    return translation if file_type == 'localisation' \
-        else translation.title()
+    return translation

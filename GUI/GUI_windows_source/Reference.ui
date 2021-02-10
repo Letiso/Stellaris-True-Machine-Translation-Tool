@@ -50,6 +50,11 @@
      <height>700</height>
     </size>
    </property>
+   <property name="font">
+    <font>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-image: url(:/backgrounds/backgrounds/Reference.png);</string>
    </property>
@@ -71,7 +76,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Montserrat</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>9</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -106,7 +111,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>14</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -137,6 +142,11 @@ color: #ffffff;</string>
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
+   </property>
+   <property name="font">
+    <font>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
+    </font>
    </property>
    <property name="focusPolicy">
     <enum>Qt::NoFocus</enum>
@@ -189,7 +199,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical{
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>-125</y>
       <width>976</width>
       <height>3063</height>
      </rect>
@@ -226,7 +236,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>11</pointsize>
         </font>
        </property>
@@ -256,7 +266,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>9</pointsize>
         </font>
        </property>
@@ -298,7 +308,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>11</pointsize>
         </font>
        </property>
@@ -334,7 +344,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>9</pointsize>
         </font>
        </property>
@@ -378,7 +388,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>11</pointsize>
         </font>
        </property>
@@ -408,7 +418,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>11</pointsize>
         </font>
        </property>
@@ -438,7 +448,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>11</pointsize>
         </font>
        </property>
@@ -468,7 +478,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>11</pointsize>
         </font>
        </property>
@@ -504,7 +514,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>9</pointsize>
         </font>
        </property>
@@ -542,7 +552,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>11</pointsize>
         </font>
        </property>
@@ -578,7 +588,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>9</pointsize>
         </font>
        </property>
@@ -620,7 +630,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>11</pointsize>
         </font>
        </property>
@@ -656,7 +666,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>9</pointsize>
         </font>
        </property>
@@ -696,7 +706,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -726,7 +736,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>11</pointsize>
         </font>
        </property>
@@ -762,7 +772,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>9</pointsize>
         </font>
        </property>
@@ -808,7 +818,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>11</pointsize>
         </font>
        </property>
@@ -844,7 +854,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>9</pointsize>
         </font>
        </property>
@@ -887,7 +897,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -923,7 +933,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>9</pointsize>
         </font>
        </property>
@@ -967,7 +977,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -1003,7 +1013,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>9</pointsize>
         </font>
        </property>
@@ -1043,7 +1053,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -1079,7 +1089,7 @@ QLabel:hover{
        </property>
        <property name="font">
         <font>
-         <family>KB Astrolyte</family>
+         <family>laCartoonerie(RUS BY LYAJKA)</family>
          <pointsize>9</pointsize>
         </font>
        </property>
@@ -1123,7 +1133,7 @@ QLabel:hover{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>11</pointsize>
     </font>
    </property>
@@ -1161,7 +1171,7 @@ QLineEdit:hover{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -1197,7 +1207,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>
@@ -1233,6 +1243,11 @@ QPushButton:pressed{
      <height>200</height>
     </size>
    </property>
+   <property name="font">
+    <font>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
+    </font>
+   </property>
    <property name="mouseTracking">
     <bool>false</bool>
    </property>
@@ -1260,7 +1275,7 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
      <pointsize>16</pointsize>
      <weight>50</weight>
      <bold>false</bold>
