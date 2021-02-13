@@ -37,7 +37,7 @@ def put_lines(file):
     with open(f"{localisation_path}", 'w', encoding='utf-8') as localisation:
         if file.type in 'localisation':
             original[0] = original[0].replace('l_english', f'l_{file.target_language}')
-        localisation.write('\ufeff')
+        localisation.write('\ufeff')        # It's an adding BOM to usual UTF-8
 
         for line in original:
             if ' +' in source[index]:

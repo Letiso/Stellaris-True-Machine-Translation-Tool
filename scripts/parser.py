@@ -65,7 +65,7 @@ def strings_parsing(original_file_path, file_type):
                                       else -1:]
                         # В противном случае оставляем только '\n'
                 else:
-                    prepared_line = line[symbol + 1:-2]
+                    prepared_line = line[symbol + 1:-1]
                     # На случай, если в начале строки нет отступов, в ней наверняка есть кавычки
                 source_text.append(prepared_line if prepared_line.endswith('\n') else f'{prepared_line}\n')
             else:

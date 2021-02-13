@@ -117,16 +117,15 @@ def local_mod_init():
 
     with open(f'{local_mod_path}.mod', 'w', encoding='utf-8') as mod:
         path = paradox_folder.replace('\\', '/')
-        mod_description = f"""version="2.8.*"
+        mod_description = f'''version="2.8.*"
 tags={{
     "Translation"
 }}
 name="{properties["collection_name"]}"
 supported_version="{current_stellaris_version()}"
 picture="thumbnail.png"
-path="{path}/mod/local_localisation"
-"""
-        mod.write(mod_description[:-1])
+path="{path}/mod/local_localisation"'''
+        mod.write(mod_description)
 
     with open(f'{local_mod_path}\\descriptor.mod', 'w', encoding='utf-8') as descriptor:
         descriptor.write(mod_description.split('\npath=')[0])
