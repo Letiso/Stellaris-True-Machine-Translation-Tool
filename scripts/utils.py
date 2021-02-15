@@ -237,24 +237,10 @@ def write_data_about_file(temp_folder, file_path):
     data["user_input_file_path"] = f'{temp_folder}\\user_input.txt'
 
 
-def replace_parts(func):
-    replace_list = [('%O%', '-th'), ]
+def prepare_temp_files(source_text):
+    temp_text = ''.join(['\n'] * len(source_text))
+    source_text = ''.join(source_text)
 
-    def wrapper(original_text, source_text, file_type, temp_text):
-        temp_text = ''.join(['\n'] * len(source_text))
-        source_text = ''.join(source_text)
-
-        if file_type == 'name_lists':
-            for part in replace_list:
-                if part[0] in source_text:
-                    source_text = source_text.replace(part[0], part[-1])
-        func(original_text, source_text, file_type, temp_text)
-
-    return wrapper
-
-
-@replace_parts
-def prepare_temp_files(original_text, source_text, file_type, temp_text):
     with open(data["source_file_path"], 'w', encoding='utf-8') as source, \
             open(data["machine_file_path"], 'w', encoding='utf-8') as machine, \
             open(data["user_input_file_path"], 'w', encoding='utf-8') as user_input:
