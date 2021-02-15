@@ -5,12 +5,14 @@ from scripts.strings_processing import string_processing
 
 
 def translating_line(line: str, file_type, target_language=None, translator=None) -> str:
-    line_and_stack = string_processing(line, file_type, 'replace')
+    symbols_stack = []  # Contains symbols specific for each of the file types found in the current string
+
+    line, symbols_stack = string_processing(line, symbols_stack, file_type, 'replace')
     try:
-        translation = translator.translate(line_and_stack[0], src='en', dest=target_language).text
+        translation = translator.translate(line, src='en', dest=target_language).text   # issue #8
     except TypeError:
         translation = line
-    translation = string_processing((translation, line_and_stack[-1]), file_type, 'return')
+    translation, symbols_stack = string_processing(translation, symbols_stack, file_type, 'return')
 
     return translation
 
@@ -20,7 +22,10 @@ def defining_translator(func):
         target_language = load(properties)["target_language"]
 
     translator = Translator(service_urls=['translate.googleapis.com',
-                                          'translate.google.com'])
+                                          'translate.googleapis.en',
+                                          'translate.googleapis.ru',
+                                          'translate.googleapis.uk',
+                                          'translate.googleapis.pl', ])
 
     def wrapper(line, file_type):
         translation = func(line, file_type, target_language, translator)
