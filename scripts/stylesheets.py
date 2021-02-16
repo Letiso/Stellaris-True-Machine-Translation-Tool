@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, QtGui
 
 
 def mod_name_style(button):
-    button.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 9))
+    button.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 10))
     button.setStyleSheet("""
     QPushButton{
         background-color: transparent;
@@ -21,7 +21,7 @@ def mod_name_style(button):
 
 
 def file_name_style(button):
-    button.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 9))
+    button.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 10))
     button.setStyleSheet("""
     QPushButton{
         background-color: transparent;
@@ -85,7 +85,7 @@ def choosen_lang_style(button):
 
 
 def incomplete_translation_style(status):
-    status.setFormat("%p%   ")
+    status.setFormat("%p%       ")
     status.setInvertedAppearance(True)
     status.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 9))
     status.setStyleSheet("""
@@ -107,7 +107,7 @@ def incomplete_translation_style(status):
 
 
 def complete_translation_style(status):
-    status.setFormat("%p%   ")
+    status.setFormat("%p%       ")
     status.setInvertedAppearance(True)
     status.setFont(QtGui.QFont("laCartoonerie(RUS BY LYAJKA)", 9))
     status.setStyleSheet("""

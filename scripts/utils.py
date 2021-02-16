@@ -326,7 +326,7 @@ def get_total_value(files):
 
 def get_collection_description(collection_name, prescripted_description, mod_list):
     description = get_info_from_db('get_collection_description', (collection_name,), count=1)[0]
-    if description is None:
+    if description is None or description.split(f'\n\n{mod_list}')[0] == '':
         description = prescripted_description
     elif mod_list in description:
         description = description.split(f'\n\n{mod_list}')[0]

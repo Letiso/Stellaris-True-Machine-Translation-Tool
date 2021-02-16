@@ -127,7 +127,7 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
         file_name_style(button)
         incomplete_translation_style(status)
         status.setValue(0)
-        status.setFormat("——   ")
+        status.setFormat("——        ")
 
         grid.addWidget(button, self.row_index + 1, 6)
         grid.addWidget(status, self.row_index + 1, 7)

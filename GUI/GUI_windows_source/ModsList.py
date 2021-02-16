@@ -152,8 +152,8 @@ class Ui_Dialog(object):
         self.PlaysetsList = QtWidgets.QComboBox(Dialog)
         self.PlaysetsList.setGeometry(QtCore.QRect(520, 40, 301, 51))
         font = QtGui.QFont()
-        font.setFamily("KB Astrolyte")
-        font.setPointSize(10)
+        font.setFamily("laCartoonerie(RUS BY LYAJKA)")
+        font.setPointSize(11)
         self.PlaysetsList.setFont(font)
         self.PlaysetsList.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
         self.PlaysetsList.setStyleSheet(" QComboBox {\n"

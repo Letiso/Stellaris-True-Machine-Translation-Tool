@@ -315,8 +315,8 @@ QPushButton:pressed{
    </property>
    <property name="font">
     <font>
-     <family>KB Astrolyte</family>
-     <pointsize>10</pointsize>
+     <family>laCartoonerie(RUS BY LYAJKA)</family>
+     <pointsize>11</pointsize>
     </font>
    </property>
    <property name="contextMenuPolicy">
