@@ -52,7 +52,8 @@ queries = {
 
 def get_data_about_mods(request, mods_id):
     data = {}
-    with sqlite3.connect(f'{paradox_folder}\\launcher-v2.sqlite') as conn:
+    conn = sqlite3.connect(f'{paradox_folder}\\launcher-v2.sqlite')
+    with conn:
         cur = conn.cursor()
         for elem in mods_id:
             row_data = cur.execute(queries[request], (elem[0],)).fetchone()
@@ -63,28 +64,33 @@ def get_data_about_mods(request, mods_id):
                 'isEnabled': elem[1],
                 'position': elem[2]
             }
+    conn.close()
     return data
 
 
 def get_mods_from_playset(request, playset_id, count=0):
-    with sqlite3.connect(f'{paradox_folder}\\launcher-v2.sqlite') as conn:
+    conn = sqlite3.connect(f'{paradox_folder}\\launcher-v2.sqlite')
+    with conn:
         cur = conn.cursor()
         row_data = cur.execute(queries[request], (playset_id,))
         if count == 0:
             data = row_data.fetchall()
         elif count == 1:
             data = row_data.fetchone()
+    conn.close()
     return data
 
 
 def get_info_from_db(request, info, count=0):
-    with sqlite3.connect(f'{paradox_folder}\\launcher-v2.sqlite') as conn:
+    conn = sqlite3.connect(f'{paradox_folder}\\launcher-v2.sqlite')
+    with conn:
         cur = conn.cursor()
         row_data = cur.execute(queries[request], info)
         if count == 0:
             data = row_data.fetchall()
         elif count == 1:
             data = row_data.fetchone()
+    conn.close()
     return data
 
 
@@ -94,15 +100,19 @@ def get_info_from_db(request, info, count=0):
 
 
 def write_data(request, modList, playset):
-    with sqlite3.connect(f'{paradox_folder}\\launcher-v2.sqlite') as conn:
+    conn = sqlite3.connect(f'{paradox_folder}\\launcher-v2.sqlite')
+    with conn:
         for mod in modList:
             conn.execute(queries[request], (mod.isEnabled, mod.position, mod.hash_key, playset[0]))
         conn.commit()
+    conn.close()
     return True
 
 
 def set_collection_data(request, info):
-    with sqlite3.connect(f'{paradox_folder}\\launcher-v2.sqlite') as conn:
+    conn = sqlite3.connect(f'{paradox_folder}\\launcher-v2.sqlite')
+    with conn:
         conn.execute(queries[request], info)
         conn.commit()
+    conn.close()
     return True
