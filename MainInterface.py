@@ -1,7 +1,3 @@
-"""
-                              ↓ Инициализация данных ↓
-"""
-
 from sys import argv
 from PyQt5 import QtWidgets, QtCore
 
@@ -206,6 +202,7 @@ class MainApp(QtWidgets.QMainWindow, MainWindow.Ui_MainWindow):
         self.set_lines()
 
     def save_localisation(self):
+        self.user_text[self.pointer] = check_new_line_sym_ending(self.EditString.toPlainText())
         try:
             self.file.tr_status = round((self.bar[0].value() / self.bar[0].maximum()) * 100) \
                                     if self.bar[0].value() != self.bar[0].maximum() \

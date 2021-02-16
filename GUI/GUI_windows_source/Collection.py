@@ -106,7 +106,7 @@ class Ui_Dialog(object):
         self.ModDescriptionText.setMaximumSize(QtCore.QSize(16777215, 250))
         font = QtGui.QFont()
         font.setFamily("laCartoonerie(RUS BY LYAJKA)")
-        font.setPointSize(10)
+        font.setPointSize(11)
         self.ModDescriptionText.setFont(font)
         self.ModDescriptionText.setAccessibleName("")
         self.ModDescriptionText.setStyleSheet("QTextEdit{\n"
@@ -124,7 +124,7 @@ class Ui_Dialog(object):
         self.ModDescriptionText.setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'laCartoonerie(RUS BY LYAJKA)\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'laCartoonerie(RUS BY LYAJKA)\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'KB Astrolyte\'; font-size:9pt;\"><br /></p></body></html>")
         self.ModDescriptionText.setTextInteractionFlags(QtCore.Qt.TextEditorInteraction)
         self.ModDescriptionText.setObjectName("ModDescriptionText")
@@ -133,12 +133,13 @@ class Ui_Dialog(object):
         self.NewNameText.setMinimumSize(QtCore.QSize(0, 40))
         self.NewNameText.setMaximumSize(QtCore.QSize(16777215, 40))
         font = QtGui.QFont()
-        font.setFamily("KB Astrolyte")
+        font.setFamily("laCartoonerie(RUS BY LYAJKA)")
         font.setPointSize(14)
         self.NewNameText.setFont(font)
         self.NewNameText.setStyleSheet("QTextEdit{\n"
 "    background-color: rgba(31, 37, 51, 50);\n"
 "    border: 1px solid transparent;\n"
+"    border-radius: 20px;\n"
 "    color: #ffffff;\n"
 "    }\n"
 "QTextEdit:hover{\n"
@@ -149,14 +150,14 @@ class Ui_Dialog(object):
         self.NewNameText.setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'KB Astrolyte\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>")
+"</style></head><body style=\" font-family:\'laCartoonerie(RUS BY LYAJKA)\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'KB Astrolyte\';\"><br /></p></body></html>")
         self.NewNameText.setTextInteractionFlags(QtCore.Qt.TextEditorInteraction)
         self.NewNameText.setObjectName("NewNameText")
         self.gridLayout.addWidget(self.NewNameText, 0, 0, 1, 1)
         self.ModListLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
-        font.setFamily("KB Astrolyte")
+        font.setFamily("laCartoonerie(RUS BY LYAJKA)")
         font.setPointSize(11)
         self.ModListLabel.setFont(font)
         self.ModListLabel.setStyleSheet("QLabel{    background-color: rgba(31, 37, 51, 50);\n"
@@ -306,7 +307,7 @@ class Ui_Dialog(object):
         self.CollectionNameLabel = QtWidgets.QLabel(Dialog)
         self.CollectionNameLabel.setGeometry(QtCore.QRect(300, 530, 561, 21))
         font = QtGui.QFont()
-        font.setFamily("KB Astrolyte")
+        font.setFamily("laCartoonerie(RUS BY LYAJKA)")
         font.setPointSize(12)
         self.CollectionNameLabel.setFont(font)
         self.CollectionNameLabel.setStyleSheet("QLabel{\n"

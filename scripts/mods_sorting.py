@@ -1,7 +1,3 @@
-"""
-                              ↓ Инициализация данных ↓
-"""
-
 import json
 from shutil import copyfile
 import os

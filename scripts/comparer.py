@@ -1,7 +1,3 @@
-"""
-                              ↓ Инициализация данных ↓
-"""
-
 from os import path, mkdir
 
 from scripts.utils import local_mod_path
@@ -11,7 +7,7 @@ from typing import Union, Tuple
 from scripts.stack import Stack, NameListElement, LastParentStack
 
 """
-                              ↓ Сохранение завершенной локализации ↓
+                              ↓ Замена оригинальных строк на переведенные ↓
 """
 
 
