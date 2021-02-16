@@ -165,8 +165,8 @@ class Ui_MainWindow(object):
         self.OriginalString = QtWidgets.QTextEdit(self.centralwidget)
         self.OriginalString.setGeometry(QtCore.QRect(80, 400, 501, 91))
         font = QtGui.QFont()
-        font.setFamily("KB Astrolyte")
-        font.setPointSize(9)
+        font.setFamily("laCartoonerie(RUS BY LYAJKA)")
+        font.setPointSize(10)
         self.OriginalString.setFont(font)
         self.OriginalString.setStyleSheet("QTextEdit{\n"
 "    background-color: rgba(31, 37, 51, 50);\n"
@@ -181,7 +181,7 @@ class Ui_MainWindow(object):
         self.OriginalString.setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'KB Astrolyte\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'laCartoonerie(RUS BY LYAJKA)\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\'; font-size:7.8pt;\"><br /></p></body></html>")
         self.OriginalString.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
         self.OriginalString.setObjectName("OriginalString")
@@ -194,8 +194,8 @@ class Ui_MainWindow(object):
         self.TranslateString.setSizePolicy(sizePolicy)
         self.TranslateString.setMaximumSize(QtCore.QSize(16777209, 16777215))
         font = QtGui.QFont()
-        font.setFamily("KB Astrolyte")
-        font.setPointSize(9)
+        font.setFamily("laCartoonerie(RUS BY LYAJKA)")
+        font.setPointSize(10)
         self.TranslateString.setFont(font)
         self.TranslateString.setStyleSheet("QTextEdit{\n"
 "    background-color: rgba(31, 37, 51, 50);\n"
@@ -210,14 +210,14 @@ class Ui_MainWindow(object):
         self.TranslateString.setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'KB Astrolyte\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'laCartoonerie(RUS BY LYAJKA)\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\'; font-size:7.8pt;\"><br /></p></body></html>")
         self.TranslateString.setObjectName("TranslateString")
         self.EditString = QtWidgets.QTextEdit(self.centralwidget)
-        self.EditString.setGeometry(QtCore.QRect(400, 560, 491, 91))
+        self.EditString.setGeometry(QtCore.QRect(400, 560, 501, 91))
         font = QtGui.QFont()
-        font.setFamily("KB Astrolyte")
-        font.setPointSize(9)
+        font.setFamily("laCartoonerie(RUS BY LYAJKA)")
+        font.setPointSize(10)
         self.EditString.setFont(font)
         self.EditString.setStyleSheet("QTextEdit{\n"
 "    background-color: rgba(31, 37, 51, 50);\n"
@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
         self.EditString.setHtml("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'KB Astrolyte\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'laCartoonerie(RUS BY LYAJKA)\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\'; font-size:7.8pt;\"><br /></p></body></html>")
         self.EditString.setObjectName("EditString")
         self.BackgroundFrame = QtWidgets.QWidget(self.centralwidget)
@@ -554,7 +554,7 @@ class Ui_MainWindow(object):
         self.ModNameLine = QtWidgets.QLineEdit(self.centralwidget)
         self.ModNameLine.setGeometry(QtCore.QRect(0, 200, 1301, 121))
         font = QtGui.QFont()
-        font.setFamily("KB Astrolyte")
+        font.setFamily("laCartoonerie(RUS BY LYAJKA)")
         font.setPointSize(14)
         self.ModNameLine.setFont(font)
         self.ModNameLine.setStyleSheet("QLineEdit{\n"
@@ -616,7 +616,7 @@ class Ui_MainWindow(object):
         self.FileNameLine = QtWidgets.QLineEdit(self.centralwidget)
         self.FileNameLine.setGeometry(QtCore.QRect(460, 800, 631, 41))
         font = QtGui.QFont()
-        font.setFamily("KB Astrolyte")
+        font.setFamily("laCartoonerie(RUS BY LYAJKA)")
         font.setPointSize(10)
         self.FileNameLine.setFont(font)
         self.FileNameLine.setStyleSheet("QLineEdit{\n"
@@ -686,7 +686,7 @@ class Ui_MainWindow(object):
         self.PreviousStringButton.setText("<")
         self.PreviousStringButton.setObjectName("PreviousStringButton")
         self.NextStringButton = QtWidgets.QPushButton(self.centralwidget)
-        self.NextStringButton.setGeometry(QtCore.QRect(940, 580, 51, 51))
+        self.NextStringButton.setGeometry(QtCore.QRect(950, 580, 51, 51))
         font = QtGui.QFont()
         font.setFamily("laCartoonerie(RUS BY LYAJKA)")
         font.setPointSize(18)

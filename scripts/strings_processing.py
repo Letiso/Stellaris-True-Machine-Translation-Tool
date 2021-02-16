@@ -29,7 +29,7 @@ def name_list(line, symbols_stack, mode):
             line = line.replace('%O%', '000-th')
 
     elif mode == 'return':
-        line = returning(line.title(), symbols_stack)
+        line = returning(line, symbols_stack)
         if '000' in line:
             line = line.replace(' 000', '000').replace('000 ', '000').replace('000-', '%C%-')
 

@@ -8,7 +8,7 @@ def translating_line(line: str, file_type, target_language=None, translator=None
     symbols_stack = []  # Contains symbols specific for each of the file types found in the current string
 
     line, symbols_stack = string_processing(line, symbols_stack, file_type, 'replace')
-    translation = translator.translate(line, src='en', dest=target_language).text  # TODO issue #8
+    translation = translator.translate(line, dest=target_language).text
     translation, symbols_stack = string_processing(translation, symbols_stack, file_type, 'return')
 
     return translation
@@ -22,7 +22,7 @@ def defining_translator(func):
                                           'translate.googleapis.en',
                                           'translate.googleapis.ru',
                                           'translate.googleapis.uk',
-                                          'translate.googleapis.pl', ],)
+                                          'translate.googleapis.pl', ])
 
     def wrapper(line, file_type):
         translation = func(line, file_type, target_language, translator)

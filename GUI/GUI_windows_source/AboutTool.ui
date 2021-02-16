@@ -94,43 +94,12 @@ QPushButton:pressed{
     <string notr="true">X</string>
    </property>
   </widget>
-  <widget class="QLabel" name="InfoLabel_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>70</y>
-     <width>511</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>laCartoonerie(RUS BY LYAJKA)</family>
-     <pointsize>11</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: none;
-color: #ffffff;</string>
-   </property>
-   <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;на основе скриптов &lt;a href=&quot;https://github.com/pacas/stellaris-trpack&quot;&gt;&lt;span style=&quot; text-decoration: none; color:#ffffff;&quot;&gt;Pacas&lt;/span&gt;&lt;/a&gt; и &lt;a href=&quot;https://github.com/haifengkao/StellairsLoadOrderFixer24/blob/master/load_order_stellaris24.py&quot;&gt;&lt;span style=&quot; text-decoration: none; color:#ffffff;&quot;&gt;haifengkao&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-   <property name="openExternalLinks">
-    <bool>true</bool>
-   </property>
-  </widget>
   <widget class="QLabel" name="InfoLabel_1">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>30</y>
-     <width>591</width>
+     <x>60</x>
+     <y>40</y>
+     <width>521</width>
      <height>41</height>
     </rect>
    </property>
@@ -219,7 +188,7 @@ QPushButton:pressed{
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>150</y>
+     <y>140</y>
      <width>591</width>
      <height>31</height>
     </rect>
@@ -249,9 +218,9 @@ color: #ffffff;</string>
   <widget class="QLabel" name="InfoLabel_3">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>100</y>
-     <width>521</width>
+     <x>150</x>
+     <y>90</y>
+     <width>361</width>
      <height>41</height>
     </rect>
    </property>
@@ -281,7 +250,6 @@ color: #ffffff;</string>
   <zorder>BackgroundFrame</zorder>
   <zorder>WindowMoveButton</zorder>
   <zorder>ExitButton</zorder>
-  <zorder>InfoLabel_2</zorder>
   <zorder>InfoLabel_1</zorder>
   <zorder>ContactUsButton</zorder>
   <zorder>InfoLabel_4</zorder>
