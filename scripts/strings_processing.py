@@ -25,9 +25,13 @@ def name_list(line, symbols_stack, mode):
 
     if mode == 'replace':
         line, symbols_stack = replacing(line, symbols, symbols_stack)
+        if '%O%' in line:
+            line = line.replace('%O%', '> -th')
 
     elif mode == 'return':
-        line = returning(line, symbols_stack)
+        line = returning(line.title(), symbols_stack)
+        if '>' in line:
+            line = line.replace(' >', '>').replace('> ', '>').replace('>-', '%C%-')
 
     return line, symbols_stack
 
@@ -38,6 +42,7 @@ def replacing(line, symbols, symbols_stack):
     for symbol in symbols:
         for position in finditer(symbol, line):
             symbols_stack.append([position.group(), position.regs[0]])
+
     # Сортируем элементы стека пузырьком
     symbols_count = len(symbols_stack)
     symbols_stack = symbols_stack
@@ -57,8 +62,9 @@ def replacing(line, symbols, symbols_stack):
         symbols_stack[index] = symbol[0]
 
     # Заменяем по одному символы на |
-    for symbol in symbols_stack:
-        line = line.replace(symbol, '<', 1)
+    for stack_index, symbol in enumerate(symbols_stack):
+        symbols_stack[stack_index] = spaces_fix(symbol, line)
+        line = line.replace(symbols_stack[stack_index], '<', 1)
 
     # передаем строку на перевод
     return line, symbols_stack
@@ -73,3 +79,17 @@ def returning(line, symbols_stack):
         line = line.replace('<', symbol, 1)
 
     return line
+
+def spaces_fix(symbol, line):
+    # Сохраняем пробелы рядом с символами из стека
+    index = line.find(symbol)
+
+    if line[index - 1] == ' ':
+        symbol = f" {symbol}"
+    try:
+        if line[index + len(symbol)] == ' ':
+            symbol = f"{symbol} "
+    except IndexError:
+        pass
+
+    return symbol
