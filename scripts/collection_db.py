@@ -78,7 +78,8 @@ def db_init(collection_path):
 
 
 def write_data_in_collection(collection_path, mod_info):
-    with sqlite3.connect(collection_path) as conn:
+    conn = sqlite3.connect(collection_path)
+    with conn:
         conn.execute(collection_queries['insert_mod_data'],
                      (
                          mod_info['mod_id'],
@@ -93,10 +94,12 @@ def write_data_in_collection(collection_path, mod_info):
                       )
                      )
         conn.commit()
+    conn.close()
 
 
 def update_data_in_collection(collection_path, file):
-    with sqlite3.connect(collection_path) as conn:
+    conn = sqlite3.connect(collection_path)
+    with conn:
         conn.execute(collection_queries['update_file_data'],
                      (
                          file.tr_status,
@@ -105,6 +108,7 @@ def update_data_in_collection(collection_path, file):
                       )
                      )
         conn.commit()
+    conn.close()
 
 
 """
@@ -134,7 +138,8 @@ class File:
 
 def get_data_from_collection(collection_path):
     files = {}
-    with sqlite3.connect(collection_path) as conn:
+    conn = sqlite3.connect(collection_path)
+    with conn:
         c = conn.cursor()
         file_data = c.execute(collection_queries['get_mods_data']).fetchall()
         for elem in file_data:
@@ -147,4 +152,5 @@ def get_data_from_collection(collection_path):
                 files[elem[0]] = [file, ]
             else:
                 files[elem[0]].append(file, )
+    conn.close()
     return files

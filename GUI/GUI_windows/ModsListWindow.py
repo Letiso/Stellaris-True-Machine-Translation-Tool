@@ -152,7 +152,7 @@ class ModsListWindow(QtWidgets.QDialog, ModsList.Ui_Dialog):
             self.grid.itemAt(elem).widget().setParent(None)
 
     def search(self, text):
-        self.generator = list(filter(lambda elem: text.lower() in elem.mod_name.lower(), self.modList))
+        self.generator = [elem for elem in self.modList if text.lower() in elem.mod_name.lower()]
 
     def sync_lineEdit(self, text):
         self.clean()
