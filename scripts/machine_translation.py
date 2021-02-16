@@ -8,10 +8,7 @@ def translating_line(line: str, file_type, target_language=None, translator=None
     symbols_stack = []  # Contains symbols specific for each of the file types found in the current string
 
     line, symbols_stack = string_processing(line, symbols_stack, file_type, 'replace')
-    try:
-        translation = translator.translate(line, src='en', dest=target_language).text  # TODO issue #8
-    except TypeError:
-        translation = line
+    translation = translator.translate(line, src='en', dest=target_language).text  # TODO issue #8
     translation, symbols_stack = string_processing(translation, symbols_stack, file_type, 'return')
 
     return translation
@@ -26,8 +23,6 @@ def defining_translator(func):
                                           'translate.googleapis.ru',
                                           'translate.googleapis.uk',
                                           'translate.googleapis.pl', ],)
-                            # proxies={'http': 'foo.bar:3128',
-                            #          'http://host.name': 'foo.bar:4012'})
 
     def wrapper(line, file_type):
         translation = func(line, file_type, target_language, translator)

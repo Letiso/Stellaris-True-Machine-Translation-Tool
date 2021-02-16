@@ -26,12 +26,12 @@ def name_list(line, symbols_stack, mode):
     if mode == 'replace':
         line, symbols_stack = replacing(line, symbols, symbols_stack)
         if '%O%' in line:
-            line = line.replace('%O%', '> -th')
+            line = line.replace('%O%', '000-th')
 
     elif mode == 'return':
         line = returning(line.title(), symbols_stack)
-        if '>' in line:
-            line = line.replace(' >', '>').replace('> ', '>').replace('>-', '%C%-')
+        if '000' in line:
+            line = line.replace(' 000', '000').replace('000 ', '000').replace('000-', '%C%-')
 
     return line, symbols_stack
 
