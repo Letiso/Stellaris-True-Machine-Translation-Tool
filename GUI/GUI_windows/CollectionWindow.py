@@ -1,13 +1,10 @@
-"""
-                            ↓ Инициализация данных ↓
-"""
-
 from PyQt5 import QtWidgets, QtCore, QtGui
 
 from GUI.GUI_windows_source import Collection
 
 from scripts.utils import get_collection_data, mod_name_wrap, get_info_from_stack, get_total_value, \
-    file_name_fix, open_file_for_resuming, find_last_file, get_collection_description, get_collection_mod_list, collection_settings_update
+    file_name_fix, open_file_for_resuming, find_last_file, get_collection_description, get_collection_mod_list,\
+    collection_settings_update
 from scripts.stylesheets import mod_name_style, file_name_style, complete_translation_style, \
     incomplete_translation_style, create_row_separator
 from scripts.messeges import call_error_message, call_accept_message
@@ -100,8 +97,14 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
         grid.addWidget(thumbnail, self.row_index + 1, 0)
         grid.addWidget(mod_name, self.row_index + 1, 1, 1, 4)
 
-    def print_mod_id(self, grid, mod_id, value):
+    def print_mod_id(self, grid, mod_id, file, value):
         self.buttons[mod_id] = QtWidgets.QPushButton(mod_id)
+        message = ('update_localisation_by_internal_way', file[0].mod_name)
+
+        self.buttons[mod_id].clicked.connect(partial(call_accept_message,
+                                                     self, message,
+                                                     partial(self.update_localisation_by_internal_way, file)))
+
         status = QtWidgets.QProgressBar()
 
         file_name_style(self.buttons[mod_id])
@@ -139,13 +142,14 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
         if files_list:
             for file in files_list:
                 button = f'{file.mod_id}-{file.original_file_name}'
-                self.buttons[button] = QtWidgets.QPushButton(file_name_fix(file.original_file_name, option))
+                self.buttons[button] = QtWidgets.QPushButton(file_name_fix(file.original_file_name, option)
+                                                             if option != '' else file.original_file_name)
 
-                message = ('start_translation', file, file.original_file_name)
+                message = ('start_translation' if self.OptionsListComboBox.currentText() != self.OptionsListComboBox.itemText(4) else 'update_localisation_by_external_way', file, file.original_file_name)
 
                 self.buttons[button].clicked.connect(partial(call_accept_message,
                                                              self, message,
-                                                             partial(self.start_localisation, file)))
+                                                             partial(self.start_localisation if self.OptionsListComboBox.currentText() != self.OptionsListComboBox.itemText(4) else self.update_localisation_by_external_way, file)))
 
                 status = QtWidgets.QProgressBar()
 
@@ -196,7 +200,7 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
             separator = create_row_separator()
 
             if options.currentText() in options.itemText(0):
-                self.print_mod_id(grid, mod_id, value)
+                self.print_mod_id(grid, mod_id, files, value)
                 grid.addWidget(separator, self.row_index + 1, 6)
 
             elif options.currentText() in options.itemText(1):
@@ -205,6 +209,10 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
 
             elif options.currentText() in options.itemText(2):
                 self.print_files_names(grid, files, 'name_lists')
+                grid.addWidget(separator, self.row_index + 1, 6)
+
+            elif options.currentText() in options.itemText(4):
+                self.print_files_names(grid, files, '')     # localisation and name_lists both
                 grid.addWidget(separator, self.row_index + 1, 6)
 
             self.row_index += 1
@@ -246,3 +254,11 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
         else:
             message = 'all_is_complete'
             call_error_message(self, message)
+
+    def update_localisation_by_internal_way(self, file):
+        self.findChild(QtWidgets.QDialog).close()
+        pass
+
+    def update_localisation_by_external_way(self, file):
+        self.findChild(QtWidgets.QDialog).close()
+        pass

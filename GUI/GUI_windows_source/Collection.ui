@@ -175,7 +175,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical{
       <x>0</x>
       <y>0</y>
       <width>855</width>
-      <height>653</height>
+      <height>651</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -454,6 +454,11 @@ QLabel:hover{
    <item>
     <property name="text">
      <string>Настройки</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Совмещение</string>
     </property>
    </item>
   </widget>

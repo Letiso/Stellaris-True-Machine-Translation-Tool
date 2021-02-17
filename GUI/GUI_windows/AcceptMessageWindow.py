@@ -22,7 +22,9 @@ class AcceptMessageWindow(QtWidgets.QDialog, AcceptMessage.Ui_Dialog):
                          'continue_last_translation': f'{message[-1]}\n\n{self.string[1]}?',
                          'start_translation': f'{message[-1]}\n\n{self.string[1]}?',
                          'save_translation': f'{self.string[2]}',
-                         'invalid_key': f'{self.string[3]}'}
+                         'update_localisation_by_internal_way': f'{message[-1]}\n\n{self.string[3]}',
+                         'update_localisation_by_external_way': f'{message[-1]}\n\n{self.string[4]}',
+                         'invalid_key': f'{self.string[5]}'}
         try:
             self.InfoLabel.setText(self.messages[message[0]])
         except AttributeError:
