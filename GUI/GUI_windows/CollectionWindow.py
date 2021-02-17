@@ -1,10 +1,14 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
+from os import listdir
+from copy import copy
 
 from GUI.GUI_windows_source import Collection
 
 from scripts.utils import get_collection_data, mod_name_wrap, get_info_from_stack, get_total_value, \
     file_name_fix, open_file_for_resuming, find_last_file, get_collection_description, get_collection_mod_list,\
-    collection_settings_update, drive, user
+    collection_settings_update, drive, user, open_zip_file, scan_for_files, remove_unpacked_files, collection_append
+from scripts.db import get_mods_from_playset
+from scripts.parser import parser_main
 from scripts.stylesheets import mod_name_style, file_name_style, complete_translation_style, \
     incomplete_translation_style, create_row_separator
 from scripts.messeges import call_success_message, call_error_message, call_accept_message
@@ -257,30 +261,63 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
             message = 'all_is_complete'
             call_error_message(self, message)
 
-    def update_localisation_by_internal_way(self, files):
-        error = update_translation(files)       # Needed to get possible error type
+    def update_localisation_by_internal_way(self, localisation_files):
+        # TODO Добавить удаление файлов, которых нет в новой версии мода
+        # TODO Добавить парсинг файла, который был помещен в коллекцию в результате компоновки
+        mod_path = get_mods_from_playset('get_mod_path', localisation_files[0].mod_name)[0][0].replace('/', '\\')
+        files_for_compare = []
+        start, log = False, None
+        archive = [file for file in listdir(mod_path) if '.zip' in file]
+        if archive:
+            open_zip_file(f'{mod_path}\\{archive[0]}')
 
-        if not error:
-            call_success_message(self, 'mod_was_updated')
-            self.paint_elements()
-        else:
-            call_error_message(self, error)
+        original_files = scan_for_files(mod_path)
+        for original_file_path in copy(original_files):
+            for localisation_file in localisation_files:
+                localisation_file_path = localisation_file.original_file_path.rsplit('\\', 2)
+                del localisation_file_path[-2]
+                localisation_file_path = '\\'.join(localisation_file_path)
+                if original_file_path in localisation_file_path:
+                    files_for_compare.append((f'{mod_path}\\{original_file_path}', localisation_file))
+                    original_files.remove(original_file_path)
+                    break
 
+        for files_pair in files_for_compare:
+            log = update_translation(files_pair, 'internal_way')
+            if start is False and log is not False:
+                start = True
+
+        if original_files:
+            start = True
+            for original_file_path in original_files:
+                parser_main(mod_path, localisation_files[0].mod_id, original_file_path)
+                collection_append(localisation_files[0].mod_id,
+                                  localisation_files[0].hash_key,
+                                  localisation_files[0].mod_name)
+        if archive:
+            remove_unpacked_files(mod_path)
         self.findChild(QtWidgets.QDialog).close()
 
-    def update_localisation_by_external_way(self, file):
+        if start is True:
+            call_success_message(self, 'mod_was_updated')
+            self.collection = get_collection_data()
+
+            self.paint_elements()
+        else:
+            call_success_message(self, 'all_files_are_up_to_date')
+
+    def update_localisation_by_external_way(self, localisation_files):
         external_localisation_file_path = QtWidgets.QFileDialog.getOpenFileName(
             directory=f'{drive}:\\Users\\{user}\\Desktop')[0]
 
         if external_localisation_file_path and external_localisation_file_path.split('.')[-1] in '.txt.yml.yaml':
-            error = update_translation(file)                    # Needed to get possible error type
+            log = update_translation(localisation_files, 'external_way')
 
-            if not error:
+            if not log:
                 call_success_message(self, 'file_was_updated')
                 self.paint_elements()
             else:
-                call_error_message(self, error)
-
+                call_error_message(self, log)
         else:                                                   # If file choosing was canceled
             call_error_message(self, 'invalid_file')
 

@@ -19,11 +19,12 @@ class SuccessMessageWindow(QtWidgets.QDialog, SuccessMessage.Ui_Dialog):
         self.string = self.StringsList.text().split('.')
         self.messages = {'files_was_added': f'{self.string[0]}',
                          'file_was_saved': f'{self.string[1]}',
-                         'mod_was_updated': f'{self.string[2]}',
-                         'file_was_updated': f'{self.string[3]}',
-                         'mods_was_sorted': f'{self.string[4]}',
-                         'language_was_changed': f'{self.string[5]}',
-                         'invalid_key': f'{self.string[6]}'}
+                         'all_files_are_up_to_date': f'{self.string[2]}',
+                         'mod_was_updated': f'{self.string[3]}',
+                         'file_was_updated': f'{self.string[4]}',
+                         'mods_was_sorted': f'{self.string[5]}',
+                         'language_was_changed': f'{self.string[6]}',
+                         'invalid_key': f'{self.string[7]}'}
 
         try:
             self.InfoLabel.setText(self.messages[message])

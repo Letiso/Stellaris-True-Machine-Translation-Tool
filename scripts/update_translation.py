@@ -4,36 +4,40 @@ from typing import Union, Tuple
 from scripts.stack import Stack, NameListElement, LastParentStack
 
 
-def update_translation(file):
-    error = localisation_update(file.original_file_path, '') if file.type == 'localisation' else name_list_update(file)
+def update_translation(files_for_combine, update_type):
+    return localisation_update(files_for_combine[0], files_for_combine[-1].original_file_path, update_type) \
+        if files_for_combine[-1].type == 'localisation' \
+        else name_list_update(files_for_combine[0], files_for_combine[-1].original_file_path, update_type)
 
-    return error
 
-
-def localisation_update(localisation_file_path, original_file_path, error=None):
-    file_type = 'localisation' if '.yml' in original_file_path else '.txt'
-
-    with open(localisation_file_path, 'r', encoding='utf-8') as localisation_text, \
-            open(original_file_path, 'r', encoding='utf-8') as original_text:
-        localisation_text = localisation_text.readlines()
+def localisation_update(original_file_path, localisation_file_path, update_type):
+    log = False
+    with open(original_file_path, 'r', encoding='utf-8') as original_text, \
+            open(localisation_file_path, 'r', encoding='utf-8') as localisation_text:
         original_text = original_text.readlines()
+        localisation_text = localisation_text.readlines()
+
     updated_text = copy(original_text)
 
-    for original_index, localisation_index in index_dict(localisation_text, original_text, file_type):
+    for original_index, localisation_index in index_dict(localisation_text, original_text, 'localisation'):
         try:
             if localisation_index is not None:
                 updated_text[original_index] = localisation_text[localisation_index]
         except IndexError:
             break
 
-    with open(f"{original_file_path}", 'w', encoding='utf-8') as updated:
-        updated.write(''.join(updated_text))
+    if updated_text != localisation_text:
+        with open(localisation_file_path if update_type in 'internal_way'
+                  else original_file_path, 'w', encoding='utf-8') as updated:
+            updated.write(''.join(updated_text))
+        log = True
+    return log
 
-    return error
 
+def name_list_update(original_file_path, localisation_file_path, update_type):
+    log = False
 
-def name_list_update(file, error=None):
-    pass
+    return log
 
 
 def index_dict(old_tr_text, new_ver_text, file_type):

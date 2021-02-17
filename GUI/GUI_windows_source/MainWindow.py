@@ -140,28 +140,6 @@ class Ui_MainWindow(object):
 "    border: #c2c2c2;\n"
 "    }")
         self.TranslationLanguageButton.setObjectName("TranslationLanguageButton")
-        self.SortModListButton = QtWidgets.QPushButton(self.centralwidget)
-        self.SortModListButton.setGeometry(QtCore.QRect(270, 780, 181, 41))
-        font = QtGui.QFont()
-        font.setFamily("laCartoonerie(RUS BY LYAJKA)")
-        font.setPointSize(11)
-        font.setBold(False)
-        font.setWeight(50)
-        self.SortModListButton.setFont(font)
-        self.SortModListButton.setStyleSheet("QPushButton{\n"
-"    background-color: rgba(31, 37, 51, 50);\n"
-"    border: 2px solid #ffffff;\n"
-"    border-radius: 20px;\n"
-"    color: #ffffff;\n"
-"    }\n"
-"QPushButton:hover{\n"
-"    background-color: rgba(100, 100, 100, 50);\n"
-"    }\n"
-"QPushButton:pressed{\n"
-"    background-color: rgba(194, 194, 194, 50);\n"
-"    border: #c2c2c2;\n"
-"    }")
-        self.SortModListButton.setObjectName("SortModListButton")
         self.OriginalString = QtWidgets.QTextEdit(self.centralwidget)
         self.OriginalString.setGeometry(QtCore.QRect(80, 400, 501, 91))
         font = QtGui.QFont()
@@ -500,7 +478,7 @@ class Ui_MainWindow(object):
         self.ExitButton.setText("X")
         self.ExitButton.setObjectName("ExitButton")
         self.ReferenceButton = QtWidgets.QPushButton(self.centralwidget)
-        self.ReferenceButton.setGeometry(QtCore.QRect(1100, 780, 171, 41))
+        self.ReferenceButton.setGeometry(QtCore.QRect(1080, 780, 171, 41))
         font = QtGui.QFont()
         font.setFamily("laCartoonerie(RUS BY LYAJKA)")
         font.setPointSize(14)
@@ -567,7 +545,7 @@ class Ui_MainWindow(object):
         self.ModNameLine.setReadOnly(True)
         self.ModNameLine.setObjectName("ModNameLine")
         self.SaveButton = QtWidgets.QPushButton(self.centralwidget)
-        self.SaveButton.setGeometry(QtCore.QRect(20, 780, 231, 41))
+        self.SaveButton.setGeometry(QtCore.QRect(50, 780, 231, 41))
         font = QtGui.QFont()
         font.setFamily("laCartoonerie(RUS BY LYAJKA)")
         font.setPointSize(12)
@@ -614,7 +592,7 @@ class Ui_MainWindow(object):
 "    }")
         self.CollectionButton.setObjectName("CollectionButton")
         self.FileNameLine = QtWidgets.QLineEdit(self.centralwidget)
-        self.FileNameLine.setGeometry(QtCore.QRect(460, 800, 631, 41))
+        self.FileNameLine.setGeometry(QtCore.QRect(340, 800, 731, 41))
         font = QtGui.QFont()
         font.setFamily("laCartoonerie(RUS BY LYAJKA)")
         font.setPointSize(10)
@@ -635,15 +613,15 @@ class Ui_MainWindow(object):
         self.steam_logo.setPixmap(QtGui.QPixmap(":/icons/icons/steam.png"))
         self.steam_logo.setAlignment(QtCore.Qt.AlignCenter)
         self.steam_logo.setObjectName("steam_logo")
-        self.UpdateTranslationButton = QtWidgets.QPushButton(self.centralwidget)
-        self.UpdateTranslationButton.setGeometry(QtCore.QRect(40, 150, 181, 27))
+        self.ModListButton = QtWidgets.QPushButton(self.centralwidget)
+        self.ModListButton.setGeometry(QtCore.QRect(40, 150, 181, 27))
         font = QtGui.QFont()
         font.setFamily("laCartoonerie(RUS BY LYAJKA)")
         font.setPointSize(11)
         font.setBold(False)
         font.setWeight(50)
-        self.UpdateTranslationButton.setFont(font)
-        self.UpdateTranslationButton.setStyleSheet("QPushButton{\n"
+        self.ModListButton.setFont(font)
+        self.ModListButton.setStyleSheet("QPushButton{\n"
 "    background-color: rgba(194, 194, 194, 50);\n"
 "    border: #c2c2c2;\n"
 "    border-radius: 13px;\n"
@@ -659,7 +637,7 @@ class Ui_MainWindow(object):
 "    background-color: #c2c2c2;\n"
 "    border: 2px solid #c2c2c2;\n"
 "    }")
-        self.UpdateTranslationButton.setObjectName("UpdateTranslationButton")
+        self.ModListButton.setObjectName("ModListButton")
         self.PreviousStringButton = QtWidgets.QPushButton(self.centralwidget)
         self.PreviousStringButton.setGeometry(QtCore.QRect(300, 580, 51, 51))
         font = QtGui.QFont()
@@ -730,7 +708,6 @@ class Ui_MainWindow(object):
         self.EditLabel.raise_()
         self.stmtt_logo.raise_()
         self.TranslationLanguageButton.raise_()
-        self.SortModListButton.raise_()
         self.OriginalString.raise_()
         self.TranslateString.raise_()
         self.EditString.raise_()
@@ -746,7 +723,7 @@ class Ui_MainWindow(object):
         self.CollectionButton.raise_()
         self.steam_logo.raise_()
         self.FileNameLine.raise_()
-        self.UpdateTranslationButton.raise_()
+        self.ModListButton.raise_()
         self.PreviousStringButton.raise_()
         self.NextStringButton.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
@@ -761,10 +738,9 @@ class Ui_MainWindow(object):
         self.TranslatedLabel.setText(_translate("MainWindow", "Машинный перевод"))
         self.EditLabel.setText(_translate("MainWindow", "Можно заменить машинный перевод на свой вариант"))
         self.TranslationLanguageButton.setText(_translate("MainWindow", "Язык перевода"))
-        self.SortModListButton.setText(_translate("MainWindow", "Модификации"))
         self.ReferenceButton.setText(_translate("MainWindow", "Справка"))
         self.ToolLanguageButton.setText(_translate("MainWindow", "Интерфейс"))
         self.SaveButton.setText(_translate("MainWindow", "Сохранить перевод"))
         self.CollectionButton.setText(_translate("MainWindow", "Коллекция"))
-        self.UpdateTranslationButton.setText(_translate("MainWindow", "Обновить файл"))
+        self.ModListButton.setText(_translate("MainWindow", "Модификации"))
         self.StringsList.setText(_translate("MainWindow", "К сожалению, переводчик не может сейчас перевести эту строку."))

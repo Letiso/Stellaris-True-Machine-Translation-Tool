@@ -107,9 +107,9 @@ class ModsListWindow(QtWidgets.QDialog, ModsList.Ui_Dialog):
             if image_data[2] == mod_id:
                 hash_key = image_data[0]
                 break
-
-        if '.zip' in listdir(mod_path)[-1]:
-            open_zip_file(f'{mod_path}\\{listdir(mod_path)[-1]}')
+        archive = [file for file in listdir(mod_path) if '.zip' in file]
+        if archive:
+            open_zip_file(f'{mod_path}\\{archive[0]}')
 
         try:
             for file_path in scan_for_files(mod_path):
@@ -125,7 +125,7 @@ class ModsListWindow(QtWidgets.QDialog, ModsList.Ui_Dialog):
             call_error_message(self, message)
             self.findChild(QtWidgets.QDialog).close()
 
-        if '.zip' in '|'.join(listdir(mod_path)):
+        if archive:
             remove_unpacked_files(mod_path)
 
     def eventFilter(self, source, event):

@@ -28,7 +28,7 @@ def put_lines(file):
         localisation.write('\ufeff')        # It's an adding BOM to usual UTF-8
 
         for line in original:
-            if ':' in line:     # For localisaton file type case
+            if ':' in line:     # For localisaton file type case, because string can replace its variable
                 line_parts = line.split(':', maxsplit=1)
                 line_parts[1] = line_parts[1].replace(source[index][:-1], user_input[index][:-1])
                 line = ':'.join(line_parts)

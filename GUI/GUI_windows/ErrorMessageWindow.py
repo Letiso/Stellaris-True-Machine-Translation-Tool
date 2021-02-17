@@ -1,7 +1,3 @@
-"""
-                                    ↓ Инициализация данных ↓
-"""
-
 from PyQt5 import QtWidgets, QtCore
 
 from GUI.GUI_windows_source import ErrorMessage
@@ -22,8 +18,8 @@ class ErrorMessageWindow(QtWidgets.QDialog, ErrorMessage.Ui_Dialog):
                        'В коллекции больше нечего переводить',
                        'Не найдено совпадений строк',
                        'Файлы идентичны',
-                       'Неверный ключ [Для разработчиков]'
-                       ]
+                       'Неверный ключ [Для разработчиков]']
+
         self.messages = {'files_not_found': f'{self.string[0]} {parent.message}',
                          'JSONDecodeError': f'{parent.message}',
                          'missing_file': f'{self.string[1]}',

@@ -49,7 +49,7 @@ class MainApp(QtWidgets.QMainWindow, MainWindow.Ui_MainWindow):
         self.PreviousStringButton.clicked.connect(self.pointer_red)
         self.ExitButton.clicked.connect(self.close)
         self.RollUpButton.clicked.connect(self.showMinimized)
-        self.SortModListButton.clicked.connect(self.show_mods_list_window)
+        self.ModListButton.clicked.connect(self.show_mods_list_window)
         self.WindowMoveButton.installEventFilter(self)
 
     def init_helpers(self, mode):
