@@ -1,59 +1,39 @@
-from os import path, mkdir
-
-from scripts.utils import local_mod_path
 from copy import copy
 
 from typing import Union, Tuple
 from scripts.stack import Stack, NameListElement, LastParentStack
 
-"""
-                              ↓ Замена оригинальных строк на переведенные ↓
-"""
+
+def update_translation(file):
+    error = localisation_update(file.original_file_path, '') if file.type == 'localisation' else name_list_update(file)
+
+    return error
 
 
-def put_lines(file):
-    localisation_path_list = file.original_file_path.split(f'{file.mod_id}\\')[-1].split('\\')[0:-2]
-    localisation_name = file.original_file_name.replace("english", file.target_language)
-    localisation_path = f'{local_mod_path}'
-    index = 0
+def localisation_update(localisation_file_path, original_file_path, error=None):
+    file_type = 'localisation' if '.yml' in original_file_path else '.txt'
 
-    for folder in localisation_path_list:
-        localisation_path += f'\\{folder}'
-        if path.isdir(localisation_path) is False:
-            mkdir(localisation_path)
-    localisation_path += f'\\{localisation_name}'
+    with open(localisation_file_path, 'r', encoding='utf-8') as localisation_text, \
+            open(original_file_path, 'r', encoding='utf-8') as original_text:
+        localisation_text = localisation_text.readlines()
+        original_text = original_text.readlines()
+    updated_text = copy(original_text)
 
-    with open(file.original_file_path, 'r', encoding='utf-8') as original, \
-            open(file.source_file_path, 'r', encoding='utf-8') as source, \
-            open(file.user_input_file_path, 'r', encoding='utf-8') as user_input:
-        original = original.readlines()
-        source = source.readlines()
-        user_input = user_input.readlines()
+    for original_index, localisation_index in index_dict(localisation_text, original_text, file_type):
+        try:
+            if localisation_index is not None:
+                updated_text[original_index] = localisation_text[localisation_index]
+        except IndexError:
+            break
 
-    with open(f"{localisation_path}", 'w', encoding='utf-8') as localisation:
-        if file.type in 'localisation':
-            original[0] = original[0].replace('l_english', f'l_{file.target_language}')
-        localisation.write('\ufeff')        # It's an adding BOM to usual UTF-8
+    with open(f"{original_file_path}", 'w', encoding='utf-8') as updated:
+        updated.write(''.join(updated_text))
 
-        for line in original:
-            if ' +' in source[index]:
-                while ' +' in source[index]:
-                    line = line.replace(source[index][:-3], user_input[index][:-3])
-                    index += 1
-            else:
-                if ':' in line:
-                    line_parts = line.split(':', maxsplit=1)
-                    line_parts[1] = line_parts[1].replace(source[index][:-1], user_input[index][:-1])
-                    line = ':'.join(line_parts)
-                else:
-                    line = line.replace(source[index][:-1], user_input[index][:-1])
-                index += 1
-            localisation.write(line)
+    return error
 
 
-"""
-                              ↓ Обновление файла ↓
-"""
+def name_list_update(file, error=None):
+    pass
 
 
 def index_dict(old_tr_text, new_ver_text, file_type):
@@ -212,23 +192,3 @@ def lists_parser(name_list: list) -> Tuple[dict, list]:
     dictionary_of_parsed_name_list: dict = _recursion_processing(text)[0]
     return dictionary_of_parsed_name_list, list_of_instances
 
-
-def update_lines(old_tr_file_path, new_ver_file_path):
-    updated_file_path = old_tr_file_path.replace('.yml', '_updated.yml')
-    file_type = 'localisation' if '.yml' in updated_file_path else '.txt'
-
-    with open(old_tr_file_path, 'r', encoding='utf-8') as old_tr_text, \
-            open(new_ver_file_path, 'r', encoding='utf-8') as new_ver_text:
-        old_tr_text = old_tr_text.readlines()
-        new_ver_text = new_ver_text.readlines()
-    updated_text = copy(new_ver_text)
-
-    for new_ver_index, old_tr_index in index_dict(old_tr_text, new_ver_text, file_type):
-        try:
-            if old_tr_index is not None:
-                updated_text[new_ver_index] = old_tr_text[old_tr_index]
-        except IndexError:
-            break
-
-    with open(f"{updated_file_path}", 'w', encoding='utf-8') as updated:
-        updated.write(''.join(updated_text))

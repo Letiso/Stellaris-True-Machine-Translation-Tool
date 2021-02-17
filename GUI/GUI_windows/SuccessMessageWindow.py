@@ -17,11 +17,12 @@ class SuccessMessageWindow(QtWidgets.QDialog, SuccessMessage.Ui_Dialog):
         self.oldPos = self.pos()
         self.init_handlers()
         self.string = self.StringsList.text().split('.')
-        self.messages = {'file_was_updated': f'{self.string[1]}',
-                         'files_was_added': f'{self.string[2]}',
-                         'mods_was_sorted': f'{self.string[3]}',
-                         'language_was_changed': f'{self.string[4]}',
-                         'files_was_compared': f'{self.string[5]}',
+        self.messages = {'files_was_added': f'{self.string[0]}',
+                         'file_was_saved': f'{self.string[1]}',
+                         'mod_was_updated': f'{self.string[2]}',
+                         'file_was_updated': f'{self.string[3]}',
+                         'mods_was_sorted': f'{self.string[4]}',
+                         'language_was_changed': f'{self.string[5]}',
                          'invalid_key': f'{self.string[6]}'}
 
         try:

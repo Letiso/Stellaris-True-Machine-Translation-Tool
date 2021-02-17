@@ -4,11 +4,12 @@ from GUI.GUI_windows_source import Collection
 
 from scripts.utils import get_collection_data, mod_name_wrap, get_info_from_stack, get_total_value, \
     file_name_fix, open_file_for_resuming, find_last_file, get_collection_description, get_collection_mod_list,\
-    collection_settings_update
+    collection_settings_update, drive, user
 from scripts.stylesheets import mod_name_style, file_name_style, complete_translation_style, \
     incomplete_translation_style, create_row_separator
-from scripts.messeges import call_error_message, call_accept_message
+from scripts.messeges import call_success_message, call_error_message, call_accept_message
 from scripts.pictures import get_thumbnail
+from scripts.update_translation import update_translation
 
 import json
 from functools import partial
@@ -97,13 +98,13 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
         grid.addWidget(thumbnail, self.row_index + 1, 0)
         grid.addWidget(mod_name, self.row_index + 1, 1, 1, 4)
 
-    def print_mod_id(self, grid, mod_id, file, value):
+    def print_mod_id(self, grid, mod_id, files, value):
         self.buttons[mod_id] = QtWidgets.QPushButton(mod_id)
-        message = ('update_localisation_by_internal_way', file[0].mod_name)
+        message = ('update_localisation_by_internal_way', files[0].mod_name)
 
         self.buttons[mod_id].clicked.connect(partial(call_accept_message,
                                                      self, message,
-                                                     partial(self.update_localisation_by_internal_way, file)))
+                                                     partial(self.update_localisation_by_internal_way, files)))
 
         status = QtWidgets.QProgressBar()
 
@@ -226,23 +227,25 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
     """
 
     def start_localisation(self, file):
-        self.parent.orig_text = open_file_for_resuming(file.source_file_path)
-        self.parent.machine_text = open_file_for_resuming(file.machine_file_path)
-        self.parent.user_text = open_file_for_resuming(file.user_input_file_path)
-        self.parent.pointer = file.pointer_pos
-        self.parent.check_new_line_symbol_string(True)
-        self.parent.pointer_max_value = len(self.parent.orig_text)
-        self.parent.file = file
-        self.parent.init_helpers(True)
-        self.parent.progressbar_set_maximum(len(self.parent.orig_text))
-        self.parent.set_lines()
-        self.parent.ModIDLine.setText(file.mod_id)
-        self.parent.mod_type_pixmap(file.mod_id)
-        self.parent.ModNameLine.setText(file.mod_name)
-        self.parent.FileNameLine.setText(file.original_file_name)
-
+        try:
+            self.parent.orig_text = open_file_for_resuming(file.source_file_path)
+            self.parent.machine_text = open_file_for_resuming(file.machine_file_path)
+            self.parent.user_text = open_file_for_resuming(file.user_input_file_path)
+            self.parent.pointer = file.pointer_pos
+            self.parent.check_new_line_symbol_string(True)
+            self.parent.pointer_max_value = len(self.parent.orig_text)
+            self.parent.file = file
+            self.parent.init_helpers(True)
+            self.parent.progressbar_set_maximum(len(self.parent.orig_text))
+            self.parent.set_lines()
+            self.parent.ModIDLine.setText(file.mod_id)
+            self.parent.mod_type_pixmap(file.mod_id)
+            self.parent.ModNameLine.setText(file.mod_name)
+            self.parent.FileNameLine.setText(file.original_file_name)
+            self.close()
+        except FileNotFoundError:
+            call_error_message(self, 'missing_file')
         self.findChild(QtWidgets.QDialog).close()
-        self.close()
 
     def continue_last_translation(self):
         last_file: list = get_info_from_stack()
@@ -250,15 +253,35 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
             file = find_last_file(self.collection, last_file)
             message = ('continue_last_translation', file, file.original_file_name)
             call_accept_message(self, message, lambda: self.start_localisation(file))
-
         else:
             message = 'all_is_complete'
             call_error_message(self, message)
 
-    def update_localisation_by_internal_way(self, file):
+    def update_localisation_by_internal_way(self, files):
+        error = update_translation(files)       # Needed to get possible error type
+
+        if not error:
+            call_success_message(self, 'mod_was_updated')
+            self.paint_elements()
+        else:
+            call_error_message(self, error)
+
         self.findChild(QtWidgets.QDialog).close()
-        pass
 
     def update_localisation_by_external_way(self, file):
+        external_localisation_file_path = QtWidgets.QFileDialog.getOpenFileName(
+            directory=f'{drive}:\\Users\\{user}\\Desktop')[0]
+
+        if external_localisation_file_path and external_localisation_file_path.split('.')[-1] in '.txt.yml.yaml':
+            error = update_translation(file)                    # Needed to get possible error type
+
+            if not error:
+                call_success_message(self, 'file_was_updated')
+                self.paint_elements()
+            else:
+                call_error_message(self, error)
+
+        else:                                                   # If file choosing was canceled
+            call_error_message(self, 'invalid_file')
+
         self.findChild(QtWidgets.QDialog).close()
-        pass

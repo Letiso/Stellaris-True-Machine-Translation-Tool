@@ -17,30 +17,21 @@ class ErrorMessageWindow(QtWidgets.QDialog, ErrorMessage.Ui_Dialog):
         self.init_handlers()
         # self.string = self.StringsList.text().split('.')
         self.string = ['В этой модификации нечего переводить\n\nВыберите другую',
-                       'Перед сохранением следует начать перевод',
                        'Файл перевода поврежден или удален',
-                       'Моды не найдены',
-                       'Вы выбрали не тот файл',
+                       'Вы не выбрали файл или он не подходит\nВыбрать можно только файлы с расширением\n.yml и .txt',
                        'В коллекции больше нечего переводить',
                        'Не найдено совпадений строк',
                        'Файлы идентичны',
-                       'Выбрать можно только файлы с расширением\n.yml и .txt',
-                       'Следует выбрать оба файла',
                        'Неверный ключ [Для разработчиков]'
                        ]
         self.messages = {'files_not_found': f'{self.string[0]} {parent.message}',
                          'JSONDecodeError': f'{parent.message}',
-                         'no_translation': f'{self.string[1]}',
+                         'missing_file': f'{self.string[1]}',
                          'invalid_file': f'{self.string[2]}',
-                         'mods_not_found': f'{self.string[3]}',
-                         'FileNotFoundError': f'{parent.message}',
-                         'someting_went_wrong': f'{self.string[4]}\n\n{parent.message}',
-                         'all_is_complete': f'{self.string[5]}',
-                         'no_string_matches': f'{self.string[6]}',
-                         'files_are_identical': f'{self.string[7]}',
-                         'TypeError': f'{self.string[8]}',
-                         'files_not_choosen': f'{self.string[9]}',
-                         'invalid_key': f'{self.string[10]}'
+                         'all_is_complete': f'{self.string[3]}',
+                         'no_string_matches': f'{self.string[4]}',
+                         'files_are_identical': f'{self.string[5]}',
+                         'invalid_key': f'{self.string[6]}'
                          }
         self.InfoLabel.setWordWrap(True)
         try:

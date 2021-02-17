@@ -6,13 +6,12 @@ from json.decoder import JSONDecodeError
 from GUI.GUI_windows_source import MainWindow
 from GUI.GUI_windows.CollectionWindow import CollectionWindow
 from GUI.GUI_windows.TranslationLanguageWindow import TranslationLanguageWindow
-from GUI.GUI_windows.UpdateTranslationWindow import UpdateTranslationWindow
 from GUI.GUI_windows.ToolLanguageWindow import ToolLanguageWindow
 from GUI.GUI_windows.ReferenceWindow import ReferenceWindow
 from GUI.GUI_windows.ModsListWindow import ModsListWindow
 
 from scripts.machine_translation import translate_line
-from scripts.comparer import put_lines
+from scripts.save_translation import put_lines
 from scripts.utils import check_new_line_sym_ending, generated_files_init, collection_update, get_interface_lang, pop_stack
 from scripts.messeges import call_success_message, call_error_message
 
@@ -45,7 +44,6 @@ class MainApp(QtWidgets.QMainWindow, MainWindow.Ui_MainWindow):
         self.TranslationLanguageButton.clicked.connect(self.translation_language_window)
         self.ToolLanguageButton.clicked.connect(self.tool_language_window)
         self.CollectionButton.clicked.connect(self.show_collection_window)
-        self.UpdateTranslationButton.clicked.connect(self.show_update_window)
         self.ReferenceButton.clicked.connect(lambda: self.reference_window())
         self.NextStringButton.clicked.connect(self.pointer_inc)
         self.PreviousStringButton.clicked.connect(self.pointer_red)
@@ -61,10 +59,6 @@ class MainApp(QtWidgets.QMainWindow, MainWindow.Ui_MainWindow):
     def show_collection_window(self):
         collection_window = CollectionWindow(self)
         collection_window.show()
-
-    def show_update_window(self):
-        update_window = UpdateTranslationWindow(self)
-        update_window.show()
 
     def show_mods_list_window(self):
         try:
@@ -166,12 +160,9 @@ class MainApp(QtWidgets.QMainWindow, MainWindow.Ui_MainWindow):
 
     def set_lines(self):
         self.OriginalString.setText(self.orig_text[self.pointer])
-        try:
-            self.machine_text[self.pointer] = check_new_line_sym_ending(
-                translate_line(self.orig_text[self.pointer], self.file.type)) if self.machine_text[self.pointer] == '\n' \
-                    else self.machine_text[self.pointer]
-        except ConnectionError:
-            self.machine_text[self.pointer] = self.string[0]
+        self.machine_text[self.pointer] = check_new_line_sym_ending(
+            translate_line(self.orig_text[self.pointer], self.file.type)) if self.machine_text[self.pointer] == '\n' \
+            else self.machine_text[self.pointer]
         self.TranslateString.setText(self.machine_text[self.pointer])
         self.EditString.setText(self.user_text[self.pointer] if self.user_text[self.pointer] != '\n'
                                 else self.machine_text[self.pointer])
