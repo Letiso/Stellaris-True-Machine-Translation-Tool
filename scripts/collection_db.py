@@ -48,6 +48,14 @@ collection_queries = {
                 pointer_pos = ?
             WHERE original_file_name = ?;
     """,
+    'remove_file_data': """
+        DELETE from mod_files
+            WHERE original_file_path = ?;
+    """,
+    'remove_mod_data': """
+        DELETE from mod_files
+            WHERE mod_id = ?;
+""",
     'get_mods_data': 'SELECT * from mod_files'
 }
 
@@ -105,6 +113,18 @@ def update_data_in_collection(collection_path, file):
                          file.tr_status,
                          file.pointer_pos,
                          file.original_file_name
+                      )
+                     )
+        conn.commit()
+    conn.close()
+
+
+def remove_data_from_collection(collection_path, data, mode):
+    conn = sqlite3.connect(collection_path)
+    with conn:
+        conn.execute(collection_queries['remove_file_data' if mode == 'file' else 'remove_mod_data'],
+                     (
+                         data
                       )
                      )
         conn.commit()
