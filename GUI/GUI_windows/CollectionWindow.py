@@ -111,7 +111,7 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
 
         self.buttons[mod_id].clicked.connect(partial(call_accept_message,
                                                      self, message,
-                                                     partial(self.update_localisation_by_internal_way, files)))
+                                                     partial(self.update_localisation_files_version, files)))
 
         status = QtWidgets.QProgressBar()
 
@@ -157,7 +157,7 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
 
                 self.buttons[button].clicked.connect(partial(call_accept_message,
                                                              self, message,
-                                                             partial(self.start_localisation if self.OptionsListComboBox.currentText() != self.OptionsListComboBox.itemText(4) else self.update_localisation_by_external_way, file)))
+                                                             partial(self.start_localisation if self.OptionsListComboBox.currentText() != self.OptionsListComboBox.itemText(4) else self.update_localisation_using_chosen_file, file)))
 
                 status = QtWidgets.QProgressBar()
 
@@ -264,11 +264,11 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
             message = 'all_is_complete'
             call_error_message(self, message)
 
-    def update_localisation_by_internal_way(self, localisation_files):
-        # TODO Добавить парсинг файла, который был помещен в коллекцию в результате компоновки
+    def update_localisation_files_version(self, localisation_files):
+        localisation_files = copy(localisation_files)
         mod_path = get_mods_from_playset('get_mod_path', localisation_files[0].mod_name)[0][0].replace('/', '\\')
         mod_properties, files_for_compare = localisation_files[0], []
-        start, log = False, None
+        start, new_files, log = False, False, False
 
         archive = [file for file in listdir(mod_path) if '.zip' in file]
         if archive:
@@ -276,7 +276,7 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
 
         original_files = scan_for_files(mod_path)
         for original_file_path in copy(original_files):
-            for localisation_file in copy(localisation_files):
+            for localisation_file in localisation_files:
                 localisation_file_path = localisation_file.original_file_path.rsplit('\\', 2)
                 del localisation_file_path[-2]
                 localisation_file_path = '\\'.join(localisation_file_path)
@@ -288,18 +288,21 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
 
         for files_pair in files_for_compare:
             log = update_translation(files_pair, 'internal_way')
+
             if start is False and log is not False:
                 start = True
 
         if original_files:
-            start = True
+            # На случай, если в локализации отсутствуют актуальные для мода файлы
+            start, new_files = True, True
             for original_file_path in original_files:
                 parser_main(mod_path, mod_properties.mod_id, original_file_path)
                 collection_append(mod_properties.mod_id,
                                   mod_properties.hash_key,
                                   mod_properties.mod_name)
         if localisation_files:
-            start = True
+            # На случай, если в локализации имеются неактуальные для мода файлы
+            start, new_files = True, True
             for localisation_file in localisation_files:
                 remove_data_from_collection(collection_path, (localisation_file.original_file_path, ), 'file')
                 rmtree(localisation_file.original_file_path.rsplit('\\', 1)[0].replace('\\', '/'))
@@ -309,23 +312,22 @@ class CollectionWindow(QtWidgets.QDialog, Collection.Ui_Dialog):
 
         if start is True:
             call_success_message(self, 'mod_was_updated')
-            self.collection = get_collection_data()
+            if new_files:
+                self.collection = get_collection_data()
             self.paint_elements()
         else:
             call_success_message(self, 'all_files_are_up_to_date')
 
-    def update_localisation_by_external_way(self, localisation_files):
-        external_localisation_file_path = QtWidgets.QFileDialog.getOpenFileName(
+    def update_localisation_using_chosen_file(self, localisation_file):
+        chosen_file_path = QtWidgets.QFileDialog.getOpenFileName(
             directory=f'{drive}:\\Users\\{user}\\Desktop')[0]
 
-        if external_localisation_file_path and external_localisation_file_path.split('.')[-1] in '.txt.yml.yaml':
-            log = update_translation(localisation_files, 'external_way')
+        if chosen_file_path and chosen_file_path.split('.')[-1] in '.txt.yml.yaml':
+            log = update_translation((chosen_file_path, localisation_file), 'external_way')
 
-            if not log:
+            if log is not False:
                 call_success_message(self, 'file_was_updated')
                 self.paint_elements()
-            else:
-                call_error_message(self, log)
         else:                                                   # If file choosing was canceled
             call_error_message(self, 'invalid_file')
 

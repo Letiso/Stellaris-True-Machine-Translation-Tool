@@ -438,7 +438,7 @@ QLabel:hover{
    </property>
    <item>
     <property name="text">
-     <string>SteamWorkshop ID</string>
+     <string>ID модификации</string>
     </property>
    </item>
    <item>
@@ -453,12 +453,12 @@ QLabel:hover{
    </item>
    <item>
     <property name="text">
-     <string>Настройки</string>
+     <string>Совмещение</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Совмещение</string>
+     <string>Настройки</string>
     </property>
    </item>
   </widget>

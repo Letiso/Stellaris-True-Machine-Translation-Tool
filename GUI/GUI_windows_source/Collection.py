@@ -356,11 +356,11 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Коллекция"))
-        self.OptionsListComboBox.setItemText(0, _translate("Dialog", "SteamWorkshop ID"))
+        self.OptionsListComboBox.setItemText(0, _translate("Dialog", "ID модификации"))
         self.OptionsListComboBox.setItemText(1, _translate("Dialog", "Локализации"))
         self.OptionsListComboBox.setItemText(2, _translate("Dialog", "Нейм-листы"))
-        self.OptionsListComboBox.setItemText(3, _translate("Dialog", "Настройки"))
-        self.OptionsListComboBox.setItemText(4, _translate("Dialog", "Совмещение"))
+        self.OptionsListComboBox.setItemText(3, _translate("Dialog", "Совмещение"))
+        self.OptionsListComboBox.setItemText(4, _translate("Dialog", "Настройки"))
         self.StatusLabel.setText(_translate("Dialog", "Статус"))
         self.CollectionLabel.setText(_translate("Dialog", "Коллекция"))
         self.StringsList.setText(_translate("Dialog", "Продолжить перевод.Применить изменения.Этот пак локализаций был создан при помощи утилиты для упрощенного перевода установленных модификаций Stellaris True Machine Translation Tool.Список модификаций:"))

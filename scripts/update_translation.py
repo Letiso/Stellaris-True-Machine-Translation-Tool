@@ -4,6 +4,11 @@ from typing import Union, Tuple
 from scripts.stack import Stack, NameListElement, LastParentStack
 
 
+# TODO Добавить обновление всех файлов мода
+# Алгоритм запрашивает папку мода с локализациями
+# и поочередно для каждого из файлов коллекции ищет совпадения по имени в папке (создаем пары файлов)
+# (использование using_chosen_file для всего мода сразу, мы выбираем только папку мода с переводами)
+
 def update_translation(files_for_combine, update_type):
     return localisation_update(files_for_combine[0], files_for_combine[-1].original_file_path, update_type) \
         if files_for_combine[-1].type == 'localisation' \
