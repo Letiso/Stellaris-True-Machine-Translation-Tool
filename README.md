@@ -1,3 +1,5 @@
+### Проект временно заморожен пока я разбираюсь с ООП, позже будет создан отдельный репозиторий с кодом, переписанным в соотвествии с принципами ООП
+
 ### Очень удобный переводчик модификаций с приятным интерфейсом, позволяющий переводить моды более чем на 20 языков с возможностью подправить каждую строку по своему вкусу
 ### A very convenient translator of modifications with a glad interface that allows you to translate mods into more than 20 languages ​​with the ability to correct each line to your liking
 
